@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Setup Guide - Astitva Agro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #16a34a;
+            border-radius: 5px;
+        }
+        .code {
+            background: #1f2937;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .success {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #166534;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 EmailJS Setup Guide for Astitva Agro</h1>
+    
+    <div class="step">
+        <h2>📧 Step 1: Create EmailJS Account</h2>
+        <ol>
+            <li>Go to <a href="https://www.emailjs.com/" target="_blank">EmailJS.com</a></li>
+            <li>Click <strong>"Sign Up"</strong></li>
+            <li>Create account with your email</li>
+            <li>Verify your email address</li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>⚙️ Step 2: Add Email Service</h2>
+        <ol>
+            <li>Go to <strong>"Email Services"</strong> in dashboard</li>
+            <li>Click <strong>"Add New Service"</strong></li>
+            <li>Choose <strong>"Gmail"</strong> (recommended)</li>
+            <li>Service ID: <span class="highlight">service_astitva</span></li>
+            <li>Connect your Gmail account</li>
+            <li>Click <strong>"Create Service"</strong></li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>📝 Step 3: Create Email Template</h2>
+        <ol>
+            <li>Go to <strong>"Email Templates"</strong></li>
+            <li>Click <strong>"Create New Template"</strong></li>
+            <li>Template ID: <span class="highlight">template_contact</span></li>
+            <li>Copy this template content:</li>
+        </ol>
+        
+        <div class="code">
+Subject: 🌾 New Inquiry from {{from_name}} - Astitva Agro
+
+Dear Astitva Agro Team,
+
+You have received a new contact form submission from your website:
+
+📋 CONTACT DETAILS:
+👤 Name: {{from_name}}
+📧 Email: {{from_email}}
+📱 Phone: {{phone}}
+🏢 Company: {{company}}
+🌾 Product Interest: {{product_interest}}
+
+💬 MESSAGE:
+{{message}}
+
+📅 Submitted: {{timestamp}}
+
+---
+Please respond directly to: {{reply_to}}
+
+Best regards,
+Astitva Agro Website System
+        </div>
+        
+        <p><strong>To Email:</strong> info@astitvaagrofpcl.com</p>
+        <p><strong>From Name:</strong> Astitva Agro Website</p>
+        <p><strong>Reply To:</strong> {{reply_to}}</p>
+    </div>
+
+    <div class="step">
+        <h2>🔑 Step 4: Get Your Keys</h2>
+        <ol>
+            <li>Go to <strong>"Account"</strong> → <strong>"General"</strong></li>
+            <li>Copy your <strong>Public Key</strong></li>
+            <li>Note down:
+                <ul>
+                    <li>Service ID: <span class="highlight">service_astitva</span></li>
+                    <li>Template ID: <span class="highlight">template_contact</span></li>
+                    <li>Public Key: <span class="highlight">YOUR_PUBLIC_KEY</span></li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>🔧 Step 5: Update Your Code</h2>
+        <p>Replace <span class="highlight">YOUR_PUBLIC_KEY</span> in the API route with your actual public key from EmailJS.</p>
+        
+        <div class="code">
+// In app/api/contact/route.ts
+user_id: "YOUR_ACTUAL_PUBLIC_KEY_HERE"
+        </div>
+    </div>
+
+    <div class="step success">
+        <h2>✅ Step 6: Test Your Form</h2>
+        <ol>
+            <li>Save and deploy your website</li>
+            <li>Fill out the contact form</li>
+            <li>Check your email at <strong>info@astitvaagrofpcl.com</strong></li>
+            <li>You should receive the formatted email!</li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>📊 EmailJS Dashboard Features</h2>
+        <ul>
+            <li><strong>Email History:</strong> See all sent emails</li>
+            <li><strong>Usage Stats:</strong> Track monthly usage</li>
+            <li><strong>Free Tier:</strong> 200 emails/month</li>
+            <li><strong>Delivery Status:</strong> Monitor success rates</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h2>🛠️ Troubleshooting</h2>
+        <ul>
+            <li><strong>Emails not sending?</strong> Check your Public Key</li>
+            <li><strong>Wrong template?</strong> Verify Service ID and Template ID</li>
+            <li><strong>Gmail issues?</strong> Make sure Gmail service is connected</li>
+            <li><strong>Spam folder?</strong> Check spam/junk folder</li>
+        </ul>
+    </div>
+
+    <div class="step success">
+        <h2>🎉 You're All Set!</h2>
+        <p>Your contact form will now send emails directly to <strong>info@astitvaagrofpcl.com</strong> whenever someone submits the form on your website.</p>
+        
+        <p><strong>What happens next:</strong></p>
+        <ul>
+            <li>User fills form → Clicks "Send Message"</li>
+            <li>Email sent instantly to your inbox</li>
+            <li>User sees success message</li>
+            <li>You can reply directly to customer's email</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Client-Side Setup - Astitva Agro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #16a34a;
+            border-radius: 5px;
+        }
+        .code {
+            background: #1f2937;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .success {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #166534;
+        }
+        .info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+        .warning {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 EmailJS Client-Side Setup (Fixed)</h1>
+    
+    <div class="step warning">
+        <h2>⚠️ Issue Fixed!</h2>
+        <p><strong>Problem:</strong> EmailJS doesn't work from server-side (Next.js API routes)</p>
+        <p><strong>Solution:</strong> Moved EmailJS to client-side (browser) - this is the correct way!</p>
+    </div>
+
+    <div class="step">
+        <h2>📧 Step 1: Create EmailJS Account</h2>
+        <ol>
+            <li>Go to <a href="https://www.emailjs.com/" target="_blank">EmailJS.com</a></li>
+            <li>Click <strong>"Sign Up"</strong></li>
+            <li>Create account with any email</li>
+            <li>Verify your email address</li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>⚙️ Step 2: Add Email Service</h2>
+        <ol>
+            <li>Go to <strong>"Email Services"</strong> in dashboard</li>
+            <li>Click <strong>"Add New Service"</strong></li>
+            <li>Choose <strong>"Gmail"</strong></li>
+            <li>Service ID: <span class="highlight">service_astitva</span></li>
+            <li>Connect your Gmail account (any Gmail works)</li>
+            <li>Click <strong>"Create Service"</strong></li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>📝 Step 3: Create Email Template</h2>
+        <ol>
+            <li>Go to <strong>"Email Templates"</strong></li>
+            <li>Click <strong>"Create New Template"</strong></li>
+            <li>Template ID: <span class="highlight">template_contact</span></li>
+            <li>Copy this template content:</li>
+        </ol>
+        
+        <div class="code">
+Subject: 🌾 New Website Inquiry from {{from_name}} - Astitva Agro
+
+Dear Astitva Agro Team,
+
+You have received a new contact form submission from your website:
+
+📋 CONTACT DETAILS:
+👤 Name: {{from_name}}
+📧 Email: {{from_email}}
+📱 Phone: {{phone}}
+🏢 Company: {{company}}
+🌾 Product Interest: {{product_interest}}
+
+💬 MESSAGE:
+{{message}}
+
+📅 Submitted: {{timestamp}}
+🌐 Source: {{website_source}}
+
+---
+IMPORTANT: Please respond directly to the customer's email: {{reply_to}}
+
+This email was automatically sent from your website contact form.
+
+Best regards,
+Astitva Agro Website System
+        </div>
+        
+        <p><strong>Template Settings:</strong></p>
+        <ul>
+            <li><strong>To Email:</strong> info@astitvaagrofpcl.com</li>
+            <li><strong>From Name:</strong> Astitva Agro Website</li>
+            <li><strong>Reply To:</strong> {{reply_to}}</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h2>🔑 Step 4: Get Your Public Key</h2>
+        <ol>
+            <li>Go to <strong>"Account"</strong> → <strong>"General"</strong></li>
+            <li>Copy your <strong>Public Key</strong></li>
+            <li>It should look like: <span class="highlight">user_xxxxxxxxxxxxxxxxx</span></li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>🔧 Step 5: Update Your Code</h2>
+        <p>Replace <span class="highlight">YOUR_PUBLIC_KEY</span> in the Contact component:</p>
+        
+        <div class="code">
+// In components/Contact.tsx, line ~85
+;(window as any).emailjs.init("YOUR_ACTUAL_PUBLIC_KEY_HERE")
+        </div>
+        
+        <p>Replace with your actual public key from EmailJS dashboard.</p>
+    </div>
+
+    <div class="step success">
+        <h2>✅ How It Works Now (Client-Side)</h2>
+        <ol>
+            <li><strong>EmailJS script loads</strong> in the browser</li>
+            <li><strong>User fills form</strong> and clicks "Send Message"</li>
+            <li><strong>EmailJS sends email</strong> directly from browser</li>
+            <li><strong>Email delivered to</strong> info@astitvaagrofpcl.com</li>
+            <li><strong>User sees success message</strong></li>
+        </ol>
+        
+        <div class="info">
+            <p><strong>✅ Benefits of Client-Side:</strong></p>
+            <ul>
+                <li>Works with static hosting (Hostinger)</li>
+                <li>No server configuration needed</li>
+                <li>EmailJS designed for this approach</li>
+                <li>More reliable delivery</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step">
+        <h2>🛠️ Testing Steps</h2>
+        <ol>
+            <li><strong>Update your public key</strong> in the code</li>
+            <li><strong>Build and deploy</strong> your website</li>
+            <li><strong>Open the contact form</strong></li>
+            <li><strong>Wait for "Email service ready"</strong> green message</li>
+            <li><strong>Fill out the form</strong> and submit</li>
+            <li><strong>Check info@astitvaagrofpcl.com</strong> for the email</li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>🔍 Troubleshooting</h2>
+        <ul>
+            <li><strong>"Email service not loaded"?</strong> → Check internet connection</li>
+            <li><strong>"Failed to send email"?</strong> → Verify public key is correct</li>
+            <li><strong>Wrong service/template IDs?</strong> → Check they match exactly</li>
+            <li><strong>Emails not arriving?</strong> → Check spam folder first</li>
+            <li><strong>Console errors?</strong> → Open browser dev tools to see errors</li>
+        </ul>
+    </div>
+
+    <div class="step success">
+        <h2>🎉 You're All Set!</h2>
+        <p>The contact form now works correctly with client-side EmailJS!</p>
+        
+        <p><strong>What you'll receive:</strong></p>
+        <div class="code">
+From: Astitva Agro Website &lt;yourgmail@gmail.com&gt;
+To: info@astitvaagrofpcl.com
+Subject: 🌾 New Website Inquiry from John Doe - Astitva Agro
+
+[Customer details and message here]
+
+Reply directly to: customer@email.com
+        </div>
+    </div>
+</body>
+</html>
