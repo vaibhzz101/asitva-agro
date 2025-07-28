@@ -30,7 +30,7 @@ const InteractiveMap = () => {
   const locations = {
     office: {
       name: "Head Office",
-      address: "Ground Floor, S. No 69/22, Gunjalwadi, Sangamner, MIDC, Ahmednagar - 422605, Maharashtra, India",
+      address: "7",
       coordinates: { lat: 19.588918, lng: 74.184155 },
       icon: Building2,
       color: "bg-blue-600",
