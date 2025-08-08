@@ -16,16 +16,16 @@ export default function Directors() {
       position: "Director - Operations",
       image: bhanudasShelkeImg,
     },
-    {
-      name: "Shantilal Hon",
-      position: "Business Advisor",
-      image: shantilalHonImg,
-    },
-    {
-      name: "Sampat Dighe",
-      position: "Marketing Director",
-      image: sampatDigheImg,
-    },
+    // {
+    //   name: "Shantilal Hon",
+    //   position: "Business Advisor",
+    //   image: shantilalHonImg,
+    // },
+    // {
+    //   name: "Sampat Dighe",
+    //   position: "Marketing Director",
+    //   image: sampatDigheImg,
+    // },
   ];
 
   return (
@@ -37,7 +37,7 @@ export default function Directors() {
         </div>
 
         {/* Directors Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
           {directors.map((director, index) => (
             <div key={index} className="text-center">
               {/* Director Photo */}
